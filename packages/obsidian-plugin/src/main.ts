@@ -22,6 +22,7 @@ import {
 } from 'obsidian';
 
 import { glyphDecorations, dotIdDecorations } from './editor/decorations';
+import { dotIdAutoComplete, smartDotIdInput } from './editor/auto-complete';
 import { GlyphLegendView, VIEW_TYPE_GLYPH_LEGEND } from './views/glyph-legend';
 import { NoteObjectsView, VIEW_TYPE_NOTE_OBJECTS } from './views/note-objects';
 import { SemanticGlyphSettings, DEFAULT_SETTINGS, SemanticGlyphSettingTab } from './settings/settings';
@@ -36,6 +37,8 @@ export default class SemanticGlyphPlugin extends Plugin {
     // Register CodeMirror extensions for glyph/DotId rendering
     this.registerEditorExtension(glyphDecorations(this.settings));
     this.registerEditorExtension(dotIdDecorations(this.settings));
+    this.registerEditorExtension(dotIdAutoComplete());
+    this.registerEditorExtension(smartDotIdInput());
 
     // Register custom views
     this.registerView(VIEW_TYPE_GLYPH_LEGEND, (leaf) => new GlyphLegendView(leaf));
@@ -87,6 +90,33 @@ export default class SemanticGlyphPlugin extends Plugin {
       editorCallback: (editor: Editor, view: MarkdownView) => {
         this.validateCurrentNote(editor);
       },
+    });
+
+    this.addCommand({
+      id: 'insert-pip-unit',
+      name: 'Insert pip (unit: •)',
+      editorCallback: (editor: Editor) => {
+        editor.replaceSelection('•');
+      },
+      hotkeys: [{ modifiers: ['Mod', 'Shift'], key: '1' }],
+    });
+
+    this.addCommand({
+      id: 'insert-pip-five',
+      name: 'Insert pip (five: ○)',
+      editorCallback: (editor: Editor) => {
+        editor.replaceSelection('○');
+      },
+      hotkeys: [{ modifiers: ['Mod', 'Shift'], key: '5' }],
+    });
+
+    this.addCommand({
+      id: 'insert-pip-ten',
+      name: 'Insert pip (ten: ⦿)',
+      editorCallback: (editor: Editor) => {
+        editor.replaceSelection('⦿');
+      },
+      hotkeys: [{ modifiers: ['Mod', 'Shift'], key: '0' }],
     });
 
     // Register context menu for editor

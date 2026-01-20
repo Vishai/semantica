@@ -157,35 +157,44 @@ export function dotIdDecorations(settings: SemanticGlyphSettings): Extension {
         const completeMatches = parseDotIds(text, false);
         const allMatches = parseDotIds(text, true);
 
-        // Create a set of complete match positions to avoid duplicates
-        const completePositions = new Set(
-          completeMatches.map(m => `${m.position.offset}-${m.position.length}`)
-        );
+        // Track all ranges to avoid overlaps
+        const processedRanges: Array<{from: number, to: number}> = [];
+
+        const hasOverlap = (from: number, to: number) => {
+          return processedRanges.some(range =>
+            (from >= range.from && from < range.to) ||
+            (to > range.from && to <= range.to) ||
+            (from <= range.from && to >= range.to)
+          );
+        };
 
         // First add all complete matches
         for (const match of completeMatches) {
           const from = match.position.offset;
           const to = from + match.position.length;
 
-          const decoration = Decoration.replace({
-            widget: new DotIdWidget(match, settings, false),
-          });
+          if (!hasOverlap(from, to)) {
+            const decoration = Decoration.replace({
+              widget: new DotIdWidget(match, settings, false),
+            });
 
-          builder.add(from, to, decoration);
+            builder.add(from, to, decoration);
+            processedRanges.push({from, to});
+          }
         }
 
-        // Then add incomplete matches (only if not already matched as complete)
+        // Then add incomplete matches (only if not overlapping)
         for (const match of allMatches) {
-          const posKey = `${match.position.offset}-${match.position.length}`;
-          if (!completePositions.has(posKey)) {
-            const from = match.position.offset;
-            const to = from + match.position.length;
+          const from = match.position.offset;
+          const to = from + match.position.length;
 
+          if (!hasOverlap(from, to)) {
             const decoration = Decoration.replace({
               widget: new DotIdWidget(match, settings, true),
             });
 
             builder.add(from, to, decoration);
+            processedRanges.push({from, to});
           }
         }
 
