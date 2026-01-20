@@ -98,7 +98,7 @@ export default class SemanticGlyphPlugin extends Plugin {
       editorCallback: (editor: Editor) => {
         editor.replaceSelection('•');
       },
-      hotkeys: [{ modifiers: ['Mod', 'Shift'], key: '1' }],
+      hotkeys: [{ modifiers: ['Alt'], key: '1' }],
     });
 
     this.addCommand({
@@ -107,7 +107,7 @@ export default class SemanticGlyphPlugin extends Plugin {
       editorCallback: (editor: Editor) => {
         editor.replaceSelection('○');
       },
-      hotkeys: [{ modifiers: ['Mod', 'Shift'], key: '5' }],
+      hotkeys: [{ modifiers: ['Alt'], key: '5' }],
     });
 
     this.addCommand({
@@ -116,7 +116,7 @@ export default class SemanticGlyphPlugin extends Plugin {
       editorCallback: (editor: Editor) => {
         editor.replaceSelection('⦿');
       },
-      hotkeys: [{ modifiers: ['Mod', 'Shift'], key: '0' }],
+      hotkeys: [{ modifiers: ['Alt'], key: '0' }],
     });
 
     // Register context menu for editor

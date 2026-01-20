@@ -102,7 +102,21 @@
   text-align: center;
   color: var(--text-muted);
   font-family: var(--font-monospace);
-  letter-spacing: -0.15em;
+  letter-spacing: -0.2em;
+}
+
+/* Scale down elements containing the ten pip */
+.semantica-dots:has(*) {
+  font-size: 0.85em;
+}
+
+/* Target the ten pip character directly for additional scaling */
+.semantica-dots {
+  text-wrap: nowrap;
+}
+
+.semantica-dots::first-line {
+  font-size: inherit;
 }
 
 /* Size variants */
@@ -124,6 +138,63 @@
   margin-top: -0.13em;
 }
 
+/* Special positioning for specific dotIds */
+/* DotId 1: • (single pip) */
+.semantica-dotid-1 {
+  margin-left: -0.2em; /* Center adjustment */
+  --unit-pip-offset: 0em; /* Vertical offset for ● (unit pip) */
+}
+
+/* DotId 2: •• (two pips) */
+.semantica-dotid-2 {
+  margin-left: 0.12em; /* Center adjustment */
+  letter-spacing: 0.1em; /* Gap between pips */
+  --unit-pip-offset: 0em; /* Vertical offset for ● (unit pip) */
+}
+
+/* DotId 3: ••• (grape cluster) - see .semantica-cluster below */
+
+/* DotId 4: •○ (two pips) */
+.semantica-dotid-4 {
+  margin-left: 0.15em; /* Center adjustment */
+  letter-spacing: 0.01em; /* Gap between pips */
+  --unit-pip-offset: -0.35em; /* Vertical offset for ● (unit pip) */
+  --five-pip-offset: 0em; /* Vertical offset for ◦ (five pip) */
+}
+
+/* DotId 5: ○ (single pip) */
+.semantica-dotid-5 {
+  margin-top: -0.08em; /* Vertical spacing */
+  margin-left: -0.2em; /* Center adjustment */
+  --five-pip-offset: 0em; /* Vertical offset for ◦ (five pip) */
+}
+
+/* DotId 6: ○• (two pips) */
+.semantica-dotid-6 {
+  margin-left: -0.15em; /* Center adjustment */
+  letter-spacing: 0.01em; /* Gap between pips */
+  --unit-pip-offset: -0.35em; /* Vertical offset for ● (unit pip) */
+  --five-pip-offset: 0em; /* Vertical offset for ◦ (five pip) */
+}
+
+/* DotId 7: ○•• (grape cluster) - see .semantica-cluster below */
+
+/* DotId 8: ••⦿ (grape cluster) - see .semantica-cluster below */
+
+/* DotId 9: •⦿ (two pips) */
+.semantica-dotid-9 {
+  margin-left: 0.1em; /* Center adjustment */
+  letter-spacing: 0.02em; /* Gap between pips */
+  --unit-pip-offset: -0.15em; /* Vertical offset for ● (unit pip) */
+  --ten-pip-offset: 0em; /* Vertical offset for ⊙ (ten pip) */
+}
+
+/* DotId 10: ⦿ (single pip) */
+.semantica-dotid-10 {
+  margin-left: -0.2em; /* Center adjustment */
+  --ten-pip-offset: 0em; /* Vertical offset for ⊙ (ten pip) */
+}
+
 /* Grape cluster pattern (for 3, 7, 8) */
 .semantica-cluster {
   display: flex;
@@ -133,12 +204,63 @@
 }
 
 .semantica-cluster-top {
-  letter-spacing: -0.2em;
+  letter-spacing: 0.2em;
 }
 
 .semantica-cluster-bottom {
   margin-top: -0.2em;
   margin-left: 0.05em;
+}
+
+/* Individual controls for each grape cluster dotId */
+
+/* DotId 3: ••• (grape cluster) */
+.semantica-cluster.semantica-dotid-3 {
+  margin-left: 0.2em; /* Center adjustment */
+}
+
+.semantica-cluster.semantica-dotid-3 .semantica-cluster-top {
+  letter-spacing: 0.2em; /* Gap between top pips */
+  --unit-pip-offset: -0.1em; /* Vertical offset for ● (unit pips) */
+}
+
+.semantica-cluster.semantica-dotid-3 .semantica-cluster-bottom {
+  margin-top: -0.2em; /* Vertical gap from top to bottom */
+  margin-left: -0.3em; /* Horizontal centering of bottom pip */
+  --unit-pip-offset: 0em; /* Vertical offset for ● (bottom pip) */
+}
+
+/* DotId 7: ○•• (grape cluster) */
+.semantica-cluster.semantica-dotid-7 {
+  margin-left: 0em; /* Center adjustment */
+}
+
+.semantica-cluster.semantica-dotid-7 .semantica-cluster-top {
+  letter-spacing: 0.05em; /* Gap between top pips */
+  --five-pip-offset: 0.16em; /* Vertical offset for ◦ (five pip) */
+  --unit-pip-offset: 0em; /* Vertical offset for ● (unit pip) */
+}
+
+.semantica-cluster.semantica-dotid-7 .semantica-cluster-bottom {
+  margin-top: -0.2em; /* Vertical gap from top to bottom */
+  margin-left: -0.03em; /* Horizontal centering of bottom pip */
+  --unit-pip-offset: 0em; /* Vertical offset for ● (bottom pip) */
+}
+
+/* DotId 8: ••⦿ (grape cluster) */
+.semantica-cluster.semantica-dotid-8 {
+  margin-left: 0.25em; /* Center adjustment */
+}
+
+.semantica-cluster.semantica-dotid-8 .semantica-cluster-top {
+  letter-spacing: 0.2em; /* Gap between top pips */
+  --unit-pip-offset: 0em; /* Vertical offset for ● (unit pips) */
+}
+
+.semantica-cluster.semantica-dotid-8 .semantica-cluster-bottom {
+  margin-top: -0.2em; /* Vertical gap from top to bottom */
+  margin-left: -0.4em; /* Horizontal centering of bottom pip */
+  --ten-pip-offset: 0em; /* Vertical offset for ⦿ (ten pip) */
 }
 
 /* Standalone reference (just dots inline) */

@@ -100,22 +100,38 @@ class DotIdWidget extends WidgetType {
       if (pattern) {
         const topRow = document.createElement('span');
         topRow.className = 'semantica-cluster-top';
-        topRow.textContent = pattern.top.map((d) => toNikkudSize(d)).join('');
+        topRow.innerHTML = pattern.top.map((d) => this.scaleTenPip(toNikkudSize(d), this.match.dotId.value)).join('');
 
         const bottomRow = document.createElement('span');
         bottomRow.className = 'semantica-cluster-bottom';
-        bottomRow.textContent = toNikkudSize(pattern.bottom);
+        bottomRow.innerHTML = this.scaleTenPip(toNikkudSize(pattern.bottom), this.match.dotId.value);
 
         dotSpan.appendChild(topRow);
         dotSpan.appendChild(bottomRow);
-        dotSpan.className += ' semantica-cluster';
+        dotSpan.className += ` semantica-cluster semantica-dotid-${this.match.dotId.value}`;
       }
     } else {
       // Simple horizontal dots
-      dotSpan.textContent = toNikkudSize(this.match.dotId.signature);
+      const renderedSignature = toNikkudSize(this.match.dotId.signature);
+      dotSpan.innerHTML = this.scaleTenPip(renderedSignature, this.match.dotId.value);
+
+      // Add special positioning classes for all dotIds
+      dotSpan.className += ` semantica-dotid-${this.match.dotId.value}`;
     }
 
     return dotSpan;
+  }
+
+  private scaleTenPip(text: string, dotIdValue: number): string {
+    // Wrap all pip types with individual vertical alignment controls per pip type
+    let result = text;
+    // Unit pip (●) - small with individual vertical adjustment
+    result = result.replace(/●/g, '<span class="pip-unit" style="font-size: 0.5em; display: inline-block; transform: translateY(calc(-0.15em + var(--unit-pip-offset, 0em)));">●</span>');
+    // Five pip (◦) - with individual vertical adjustment
+    result = result.replace(/◦/g, '<span class="pip-five" style="display: inline-block; transform: translateY(var(--five-pip-offset, 0em));">◦</span>');
+    // Ten pip (⊙) - scaled down with individual vertical adjustment
+    result = result.replace(/⊙/g, '<span class="pip-ten" style="font-size: 0.7em; display: inline-block; transform: translateY(calc(-0.1em + var(--ten-pip-offset, 0em)));">⊙</span>');
+    return result;
   }
 
   eq(other: DotIdWidget): boolean {

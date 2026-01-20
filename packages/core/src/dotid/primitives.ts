@@ -29,9 +29,9 @@ export const DOT_UNICODE = {
  * Nikkud-size variants for rendered output
  */
 export const DOT_NIKKUD = {
-  UNIT: '·' as const,        // U+00B7 - middle dot
+  UNIT: '●' as const,        // U+25CF - black circle (clearly circular)
   FIVE: '◦' as const,        // U+25E6 - white bullet
-  TEN: '⦿' as const,         // Same as full size for ten
+  TEN: '⊙' as const,         // U+2299 - circled dot (distinct from hollow five)
 } as const;
 
 /**
@@ -177,8 +177,8 @@ export const CLUSTER_PATTERNS: Record<number, { top: string[]; bottom: string }>
 export function toNikkudSize(signature: string): string {
   return signature
     .replace(/•/g, DOT_NIKKUD.UNIT)
-    .replace(/○/g, DOT_NIKKUD.FIVE);
-  // ⦿ stays the same
+    .replace(/○/g, DOT_NIKKUD.FIVE)
+    .replace(/⦿/g, DOT_NIKKUD.TEN);
 }
 
 /**
