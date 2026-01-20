@@ -1,0 +1,568 @@
+/**
+ * Semantic Glyph System - Obsidian Plugin Styles
+ */
+
+/* ===========================================
+   GLYPH STYLING
+   =========================================== */
+
+.semantic-glyph {
+  font-weight: 500;
+  cursor: help;
+}
+
+/* Category colors */
+.semantic-glyph-level { color: #6366f1; }
+.semantic-glyph-magnitude { color: #f59e0b; }
+.semantic-glyph-epistemic { color: #10b981; }
+.semantic-glyph-structural { color: #8b5cf6; }
+.semantic-glyph-causal { color: #ef4444; }
+.semantic-glyph-centrality { color: #3b82f6; }
+.semantic-glyph-provenance { color: #6b7280; }
+.semantic-glyph-boundary { color: #f97316; }
+.semantic-glyph-salience { color: #eab308; }
+.semantic-glyph-framing { color: #14b8a6; }
+.semantic-glyph-agency { color: #ec4899; }
+
+.semantic-glyph-unknown {
+  color: var(--text-muted);
+}
+
+/* ===========================================
+   DOTID STYLING
+   =========================================== */
+
+.semantic-glyph-dotid {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: baseline;
+}
+
+.semantic-glyph-term {
+  font-weight: inherit;
+}
+
+.semantic-glyph-dots {
+  display: block;
+  text-align: center;
+  color: var(--text-muted);
+  font-family: var(--font-monospace);
+}
+
+/* Size variants */
+.semantic-glyph-dots-small {
+  font-size: 0.5em;
+  line-height: 0.4;
+  margin-top: -0.2em;
+}
+
+.semantic-glyph-dots-medium {
+  font-size: 0.6em;
+  line-height: 0.5;
+  margin-top: -0.3em;
+}
+
+.semantic-glyph-dots-large {
+  font-size: 0.7em;
+  line-height: 0.6;
+  margin-top: -0.35em;
+}
+
+/* Grape cluster pattern */
+.semantic-glyph-cluster {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.semantic-glyph-cluster-top {
+  letter-spacing: 0.05em;
+}
+
+.semantic-glyph-cluster-bottom {
+  margin-top: -0.15em;
+}
+
+/* Inline DotId (non-nikkud mode) */
+.semantic-glyph-dotid-inline {
+  font-family: var(--font-monospace);
+  font-size: 0.9em;
+  color: var(--text-muted);
+}
+
+/* ===========================================
+   GLYPH PICKER MODAL
+   =========================================== */
+
+.semantic-glyph-picker {
+  padding: 16px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.glyph-picker-filter {
+  margin-bottom: 16px;
+}
+
+.glyph-picker-filter input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  background: var(--background-primary);
+  color: var(--text-normal);
+}
+
+.glyph-picker-filter input:focus {
+  outline: none;
+  border-color: var(--interactive-accent);
+}
+
+.glyph-picker-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.glyph-section h4 {
+  margin: 0 0 8px 0;
+  font-size: 0.9em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.glyph-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+}
+
+.glyph-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  background: var(--background-secondary);
+  transition: background 0.15s ease;
+}
+
+.glyph-item:hover {
+  background: var(--background-modifier-hover);
+}
+
+.glyph-symbol {
+  font-size: 1.2em;
+  width: 24px;
+  text-align: center;
+}
+
+.glyph-name {
+  font-size: 0.85em;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ===========================================
+   DOTID PICKER MODAL
+   =========================================== */
+
+.semantic-glyph-dotid-picker {
+  padding: 16px;
+}
+
+.dotid-section {
+  margin-bottom: 20px;
+}
+
+.dotid-section h4 {
+  margin: 0 0 8px 0;
+  font-size: 0.9em;
+  color: var(--text-muted);
+}
+
+.dotid-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  background: var(--background-secondary);
+  margin-bottom: 8px;
+  transition: background 0.15s ease;
+}
+
+.dotid-item:hover {
+  background: var(--background-modifier-hover);
+}
+
+.dotid-item-primary {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+}
+
+.dotid-item-primary:hover {
+  background: var(--interactive-accent-hover);
+}
+
+.dotid-preview {
+  font-family: var(--font-monospace);
+  font-weight: 500;
+}
+
+.dotid-term {
+  flex: 1;
+  font-weight: 500;
+}
+
+.dotid-desc {
+  font-size: 0.85em;
+  color: var(--text-muted);
+}
+
+.dotid-warning {
+  color: var(--text-error);
+  font-style: italic;
+}
+
+.dotid-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dotid-slot {
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: var(--background-secondary);
+  font-family: var(--font-monospace);
+}
+
+.dotid-slot-used {
+  background: var(--background-modifier-border);
+  color: var(--text-muted);
+}
+
+.dotid-status {
+  margin-top: 16px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  background: var(--background-secondary);
+  font-size: 0.9em;
+  color: var(--text-muted);
+}
+
+.dotid-status-warning {
+  background: var(--background-modifier-error);
+  color: var(--text-error);
+}
+
+/* ===========================================
+   GLYPH LEGEND VIEW
+   =========================================== */
+
+.semantic-glyph-legend {
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.semantic-glyph-legend h3 {
+  margin: 0 0 16px 0;
+  font-size: 1.1em;
+}
+
+.legend-section {
+  margin-bottom: 24px;
+}
+
+.legend-section h4 {
+  margin: 0 0 12px 0;
+  font-size: 0.9em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--background-modifier-border);
+  padding-bottom: 4px;
+}
+
+.legend-section h5 {
+  margin: 12px 0 8px 0;
+  font-size: 0.85em;
+  color: var(--text-muted);
+}
+
+.legend-note {
+  font-size: 0.85em;
+  color: var(--text-muted);
+  font-style: italic;
+  margin: 0 0 12px 0;
+}
+
+.legend-note-emphasis {
+  font-weight: 500;
+}
+
+/* Quick reference grid */
+.legend-quick-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.legend-quick-row {
+  display: flex;
+  gap: 12px;
+  padding: 4px 0;
+}
+
+.legend-quick-glyphs {
+  width: 60px;
+  font-size: 1.1em;
+}
+
+.legend-quick-name {
+  font-size: 0.9em;
+  color: var(--text-muted);
+}
+
+/* Category detail */
+.legend-category {
+  margin-bottom: 16px;
+}
+
+.legend-category-header {
+  margin-bottom: 8px;
+}
+
+.legend-glyph-row {
+  display: flex;
+  gap: 12px;
+  padding: 6px 0;
+  padding-left: 12px;
+  border-left: 2px solid var(--background-modifier-border);
+}
+
+.legend-glyph-symbol {
+  font-size: 1.2em;
+  width: 24px;
+}
+
+.legend-glyph-info {
+  font-size: 0.9em;
+}
+
+/* Compounds */
+.legend-compound-category {
+  margin-bottom: 12px;
+}
+
+.legend-compound-row {
+  display: flex;
+  gap: 12px;
+  padding: 4px 0;
+  padding-left: 12px;
+}
+
+.legend-compound-symbol {
+  font-size: 1.1em;
+  width: 40px;
+}
+
+.legend-compound-meaning {
+  font-size: 0.9em;
+  color: var(--text-muted);
+}
+
+/* Hebrew */
+.legend-hebrew-row {
+  display: flex;
+  gap: 12px;
+  padding: 6px 0;
+}
+
+.legend-hebrew-letter {
+  font-size: 1.3em;
+  width: 24px;
+  text-align: center;
+}
+
+.legend-hebrew-info {
+  font-size: 0.9em;
+}
+
+/* Checklist */
+.legend-checklist {
+  margin: 0;
+  padding-left: 24px;
+}
+
+.legend-checklist li {
+  padding: 4px 0;
+  font-size: 0.9em;
+}
+
+.legend-checklist-glyphs {
+  color: var(--text-muted);
+}
+
+/* ===========================================
+   NOTE OBJECTS VIEW
+   =========================================== */
+
+.semantic-glyph-objects {
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.semantic-glyph-objects h3 {
+  margin: 0 0 12px 0;
+  font-size: 1em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.semantic-glyph-objects h4 {
+  margin: 0 0 8px 0;
+  font-size: 0.85em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.objects-empty {
+  color: var(--text-muted);
+  font-style: italic;
+  text-align: center;
+  padding: 20px;
+}
+
+.objects-summary {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.objects-stats {
+  display: flex;
+  gap: 8px;
+  font-size: 0.9em;
+  color: var(--text-muted);
+}
+
+.objects-stat-sep {
+  opacity: 0.5;
+}
+
+.objects-stat-error {
+  color: var(--text-error);
+}
+
+/* Validation */
+.objects-validation {
+  margin-bottom: 16px;
+  padding: 12px;
+  border-radius: 4px;
+  background: var(--background-modifier-error);
+}
+
+.objects-validation h4 {
+  color: var(--text-error);
+  margin-bottom: 8px;
+}
+
+.objects-validation-item {
+  display: flex;
+  gap: 8px;
+  padding: 4px 0;
+  font-size: 0.9em;
+}
+
+.objects-validation-icon {
+  width: 16px;
+}
+
+/* Objects list */
+.objects-list {
+  margin-bottom: 16px;
+}
+
+.objects-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.objects-item:hover {
+  background: var(--background-modifier-hover);
+}
+
+.objects-item-badge {
+  font-family: var(--font-monospace);
+  font-size: 0.85em;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: var(--background-secondary);
+}
+
+.objects-item-term {
+  flex: 1;
+  font-weight: 500;
+}
+
+.objects-item-refs {
+  font-size: 0.85em;
+  color: var(--text-muted);
+}
+
+.objects-item-refs-unused {
+  color: var(--text-error);
+  font-style: italic;
+}
+
+.objects-item-pos {
+  font-size: 0.8em;
+  color: var(--text-faint);
+}
+
+/* Glyphs summary */
+.objects-glyphs {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--background-modifier-border);
+}
+
+.objects-glyphs-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.objects-glyph-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 3px;
+  background: var(--background-secondary);
+}
+
+.objects-glyph-symbol {
+  font-size: 1.1em;
+}
+
+.objects-glyph-count {
+  font-size: 0.8em;
+  color: var(--text-muted);
+}
