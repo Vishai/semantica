@@ -1,6 +1,6 @@
 {
-  "id": "semantic-glyph-system",
-  "name": "Semantic Glyph System",
+  "id": "semantica",
+  "name": "Semantica",
   "version": "0.1.0",
   "minAppVersion": "1.4.0",
   "description": "Symbolic annotations for thinking in writing. Semantic glyphs, DotIds, and context-aware suggestions.",

@@ -28,6 +28,7 @@ export {
   containsDotIds,
   extractTermFromDeclaration,
   buildDeclaration,
+  buildGlyphAttachment,
   buildReference,
   type DotIdMatch,
 } from './parser';

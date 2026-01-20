@@ -1,91 +1,153 @@
 /**
- * Semantic Glyph System - Obsidian Plugin Styles
+ * Semantica - Obsidian Plugin Styles
  */
 
 /* ===========================================
    GLYPH STYLING
    =========================================== */
 
-.semantic-glyph {
+.semantica-glyph {
   font-weight: 500;
   cursor: help;
 }
 
 /* Category colors */
-.semantic-glyph-level { color: #6366f1; }
-.semantic-glyph-magnitude { color: #f59e0b; }
-.semantic-glyph-epistemic { color: #10b981; }
-.semantic-glyph-structural { color: #8b5cf6; }
-.semantic-glyph-causal { color: #ef4444; }
-.semantic-glyph-centrality { color: #3b82f6; }
-.semantic-glyph-provenance { color: #6b7280; }
-.semantic-glyph-boundary { color: #f97316; }
-.semantic-glyph-salience { color: #eab308; }
-.semantic-glyph-framing { color: #14b8a6; }
-.semantic-glyph-agency { color: #ec4899; }
+.semantica-glyph-level {
+  color: #6366f1;
+}
+.semantica-glyph-magnitude {
+  color: #f59e0b;
+}
+.semantica-glyph-epistemic {
+  color: #10b981;
+}
+.semantica-glyph-structural {
+  color: #8b5cf6;
+}
+.semantica-glyph-causal {
+  color: #ef4444;
+}
+.semantica-glyph-centrality {
+  color: #3b82f6;
+}
+.semantica-glyph-provenance {
+  color: #6b7280;
+}
+.semantica-glyph-boundary {
+  color: #f97316;
+}
+.semantica-glyph-salience {
+  color: #eab308;
+}
+.semantica-glyph-framing {
+  color: #14b8a6;
+}
+.semantica-glyph-agency {
+  color: #ec4899;
+}
 
-.semantic-glyph-unknown {
+.semantica-glyph-unknown {
   color: var(--text-muted);
 }
 
 /* ===========================================
-   DOTID STYLING
+   DOTID STYLING - Nikkud-style rendering
    =========================================== */
 
-.semantic-glyph-dotid {
+/* Container for term/glyph + dots beneath */
+.semantica-dotid {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
   vertical-align: baseline;
+  line-height: 1;
 }
 
-.semantic-glyph-term {
+/* Incomplete dotId (live preview while typing) */
+.semantica-dotid-incomplete {
+  opacity: 0.6;
+}
+
+.semantica-dotid-incomplete .semantica-dots {
+  color: var(--interactive-accent);
+  animation: dotid-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes dotid-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* The anchor (term or glyph) */
+.semantica-anchor {
+  display: block;
+}
+
+.semantica-anchor-term {
   font-weight: inherit;
 }
 
-.semantic-glyph-dots {
+.semantica-anchor-glyph {
+  font-weight: 500;
+}
+
+/* Dots beneath the anchor */
+.semantica-dots {
   display: block;
   text-align: center;
   color: var(--text-muted);
   font-family: var(--font-monospace);
+  letter-spacing: -0.5em;
 }
 
 /* Size variants */
-.semantic-glyph-dots-small {
-  font-size: 0.5em;
+.semantica-dots-small {
+  font-size: 1em;
   line-height: 0.4;
-  margin-top: -0.2em;
+  margin-top: -0.13em;
 }
 
-.semantic-glyph-dots-medium {
-  font-size: 0.6em;
+.semantica-dots-medium {
+  font-size: 1.2em;
   line-height: 0.5;
-  margin-top: -0.3em;
+  margin-top: -0.13em;
 }
 
-.semantic-glyph-dots-large {
-  font-size: 0.7em;
+.semantica-dots-large {
+  font-size: 1.4em;
   line-height: 0.6;
-  margin-top: -0.35em;
+  margin-top: -0.13em;
 }
 
-/* Grape cluster pattern */
-.semantic-glyph-cluster {
+/* Grape cluster pattern (for 3, 7, 8) */
+.semantica-cluster {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.semantic-glyph-cluster-top {
-  letter-spacing: 0.05em;
+.semantica-cluster-top {
+  letter-spacing: -0.3em;
 }
 
-.semantic-glyph-cluster-bottom {
+.semantica-cluster-bottom {
   margin-top: -0.15em;
 }
 
-/* Inline DotId (non-nikkud mode) */
-.semantic-glyph-dotid-inline {
+/* Standalone reference (just dots inline) */
+.semantica-reference {
+  font-family: var(--font-monospace);
+  font-size: 0.9em;
+  color: var(--text-muted);
+}
+
+/* Raw/debug mode */
+.semantica-dotid-raw {
   font-family: var(--font-monospace);
   font-size: 0.9em;
   color: var(--text-muted);
@@ -95,17 +157,17 @@
    GLYPH PICKER MODAL
    =========================================== */
 
-.semantic-glyph-picker {
+.semantica-glyph-picker {
   padding: 16px;
   max-height: 70vh;
   overflow-y: auto;
 }
 
-.glyph-picker-filter {
+.semantica-filter {
   margin-bottom: 16px;
 }
 
-.glyph-picker-filter input {
+.semantica-filter input {
   width: 100%;
   padding: 8px 12px;
   border: 1px solid var(--background-modifier-border);
@@ -114,18 +176,22 @@
   color: var(--text-normal);
 }
 
-.glyph-picker-filter input:focus {
+.semantica-filter input:focus {
   outline: none;
   border-color: var(--interactive-accent);
 }
 
-.glyph-picker-container {
+.semantica-picker-container {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.glyph-section h4 {
+.semantica-section {
+  margin-bottom: 16px;
+}
+
+.semantica-section h4 {
   margin: 0 0 8px 0;
   font-size: 0.9em;
   color: var(--text-muted);
@@ -133,13 +199,19 @@
   letter-spacing: 0.05em;
 }
 
-.glyph-grid {
+.semantica-section-primary {
+  padding: 12px;
+  border-radius: 6px;
+  background: var(--background-secondary);
+}
+
+.semantica-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 8px;
 }
 
-.glyph-item {
+.semantica-item {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -150,17 +222,17 @@
   transition: background 0.15s ease;
 }
 
-.glyph-item:hover {
+.semantica-item:hover {
   background: var(--background-modifier-hover);
 }
 
-.glyph-symbol {
+.semantica-symbol {
   font-size: 1.2em;
   width: 24px;
   text-align: center;
 }
 
-.glyph-name {
+.semantica-name {
   font-size: 0.85em;
   color: var(--text-muted);
   overflow: hidden;
@@ -169,87 +241,157 @@
 }
 
 /* ===========================================
-   DOTID PICKER MODAL
+   DOTID PICKER MODAL - Improved UX
    =========================================== */
 
-.semantic-glyph-dotid-picker {
+.semantica-dotid-picker {
   padding: 16px;
+  max-width: 500px;
 }
 
-.dotid-section {
-  margin-bottom: 20px;
+.semantica-dotid-picker h2 {
+  margin: 0 0 16px 0;
+  font-size: 1.1em;
 }
 
-.dotid-section h4 {
-  margin: 0 0 8px 0;
-  font-size: 0.9em;
-  color: var(--text-muted);
+/* DotId assignment grid */
+.semantica-dotid-assignment-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
-.dotid-item {
+.semantica-dotid-slot {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
-  padding: 10px 12px;
-  border-radius: 4px;
+  padding: 10px 8px;
+  border-radius: 6px;
   cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.semantica-dotid-slot-available {
   background: var(--background-secondary);
-  margin-bottom: 8px;
-  transition: background 0.15s ease;
+  border: 2px solid transparent;
 }
 
-.dotid-item:hover {
-  background: var(--background-modifier-hover);
-}
-
-.dotid-item-primary {
+.semantica-dotid-slot-available:hover {
   background: var(--interactive-accent);
   color: var(--text-on-accent);
 }
 
-.dotid-item-primary:hover {
-  background: var(--interactive-accent-hover);
-}
-
-.dotid-preview {
-  font-family: var(--font-monospace);
-  font-weight: 500;
-}
-
-.dotid-term {
-  flex: 1;
-  font-weight: 500;
-}
-
-.dotid-desc {
-  font-size: 0.85em;
+.semantica-dotid-slot-used {
+  background: var(--background-modifier-border);
   color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
-.dotid-warning {
-  color: var(--text-error);
-  font-style: italic;
+.semantica-dotid-sig {
+  font-family: var(--font-monospace);
+  font-size: 1.1em;
+  margin-bottom: 4px;
 }
 
-.dotid-grid {
+.semantica-dotid-label {
+  font-size: 0.75em;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+/* Preview section */
+.semantica-preview {
+  padding: 12px;
+  background: var(--background-primary);
+  border-radius: 4px;
+  font-size: 0.9em;
+  margin-top: 12px;
+}
+
+.semantica-preview code {
+  font-family: var(--font-monospace);
+  background: var(--background-modifier-border);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+/* DotId overview (mini grid) */
+.semantica-dotid-overview {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
 }
 
-.dotid-slot {
-  padding: 6px 10px;
-  border-radius: 4px;
-  background: var(--background-secondary);
+.semantica-dotid-mini {
+  padding: 4px 8px;
+  border-radius: 3px;
   font-family: var(--font-monospace);
+  font-size: 0.85em;
+  background: var(--background-secondary);
+  cursor: help;
 }
 
-.dotid-slot-used {
+.semantica-dotid-mini-used {
   background: var(--background-modifier-border);
   color: var(--text-muted);
 }
 
-.dotid-status {
+/* Reference list */
+.semantica-hint {
+  font-size: 0.85em;
+  color: var(--text-muted);
+  margin: 0 0 8px 0;
+}
+
+.semantica-ref-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.semantica-ref-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  background: var(--background-secondary);
+  transition: background 0.15s ease;
+}
+
+.semantica-ref-item:hover {
+  background: var(--background-modifier-hover);
+}
+
+.semantica-ref-sig {
+  font-family: var(--font-monospace);
+  font-size: 0.9em;
+  width: 40px;
+}
+
+.semantica-ref-term {
+  flex: 1;
+  font-weight: 500;
+}
+
+.semantica-ref-arrow {
+  color: var(--text-muted);
+}
+
+.semantica-ref-result {
+  font-family: var(--font-monospace);
+  font-size: 0.9em;
+  color: var(--text-muted);
+}
+
+/* Status bar */
+.semantica-status {
   margin-top: 16px;
   padding: 8px 12px;
   border-radius: 4px;
@@ -258,30 +400,34 @@
   color: var(--text-muted);
 }
 
-.dotid-status-warning {
+.semantica-status-warning {
   background: var(--background-modifier-error);
   color: var(--text-error);
+}
+
+.semantica-status-hint {
+  opacity: 0.8;
 }
 
 /* ===========================================
    GLYPH LEGEND VIEW
    =========================================== */
 
-.semantic-glyph-legend {
+.semantica-legend {
   padding: 16px;
   overflow-y: auto;
 }
 
-.semantic-glyph-legend h3 {
+.semantica-legend h3 {
   margin: 0 0 16px 0;
   font-size: 1.1em;
 }
 
-.legend-section {
+.semantica-legend-section {
   margin-bottom: 24px;
 }
 
-.legend-section h4 {
+.semantica-legend-section h4 {
   margin: 0 0 12px 0;
   font-size: 0.9em;
   color: var(--text-muted);
@@ -291,56 +437,56 @@
   padding-bottom: 4px;
 }
 
-.legend-section h5 {
+.semantica-legend-section h5 {
   margin: 12px 0 8px 0;
   font-size: 0.85em;
   color: var(--text-muted);
 }
 
-.legend-note {
+.semantica-legend-note {
   font-size: 0.85em;
   color: var(--text-muted);
   font-style: italic;
   margin: 0 0 12px 0;
 }
 
-.legend-note-emphasis {
+.semantica-legend-note-emphasis {
   font-weight: 500;
 }
 
 /* Quick reference grid */
-.legend-quick-grid {
+.semantica-legend-quick-grid {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.legend-quick-row {
+.semantica-legend-quick-row {
   display: flex;
   gap: 12px;
   padding: 4px 0;
 }
 
-.legend-quick-glyphs {
+.semantica-legend-quick-glyphs {
   width: 60px;
   font-size: 1.1em;
 }
 
-.legend-quick-name {
+.semantica-legend-quick-name {
   font-size: 0.9em;
   color: var(--text-muted);
 }
 
 /* Category detail */
-.legend-category {
+.semantica-legend-category {
   margin-bottom: 16px;
 }
 
-.legend-category-header {
+.semantica-legend-category-header {
   margin-bottom: 8px;
 }
 
-.legend-glyph-row {
+.semantica-legend-glyph-row {
   display: flex;
   gap: 12px;
   padding: 6px 0;
@@ -348,66 +494,66 @@
   border-left: 2px solid var(--background-modifier-border);
 }
 
-.legend-glyph-symbol {
+.semantica-legend-glyph-symbol {
   font-size: 1.2em;
   width: 24px;
 }
 
-.legend-glyph-info {
+.semantica-legend-glyph-info {
   font-size: 0.9em;
 }
 
 /* Compounds */
-.legend-compound-category {
+.semantica-legend-compound-category {
   margin-bottom: 12px;
 }
 
-.legend-compound-row {
+.semantica-legend-compound-row {
   display: flex;
   gap: 12px;
   padding: 4px 0;
   padding-left: 12px;
 }
 
-.legend-compound-symbol {
+.semantica-legend-compound-symbol {
   font-size: 1.1em;
   width: 40px;
 }
 
-.legend-compound-meaning {
+.semantica-legend-compound-meaning {
   font-size: 0.9em;
   color: var(--text-muted);
 }
 
 /* Hebrew */
-.legend-hebrew-row {
+.semantica-legend-hebrew-row {
   display: flex;
   gap: 12px;
   padding: 6px 0;
 }
 
-.legend-hebrew-letter {
+.semantica-legend-hebrew-letter {
   font-size: 1.3em;
   width: 24px;
   text-align: center;
 }
 
-.legend-hebrew-info {
+.semantica-legend-hebrew-info {
   font-size: 0.9em;
 }
 
 /* Checklist */
-.legend-checklist {
+.semantica-legend-checklist {
   margin: 0;
   padding-left: 24px;
 }
 
-.legend-checklist li {
+.semantica-legend-checklist li {
   padding: 4px 0;
   font-size: 0.9em;
 }
 
-.legend-checklist-glyphs {
+.semantica-legend-checklist-glyphs {
   color: var(--text-muted);
 }
 
@@ -415,12 +561,12 @@
    NOTE OBJECTS VIEW
    =========================================== */
 
-.semantic-glyph-objects {
+.semantica-objects {
   padding: 16px;
   overflow-y: auto;
 }
 
-.semantic-glyph-objects h3 {
+.semantica-objects h3 {
   margin: 0 0 12px 0;
   font-size: 1em;
   white-space: nowrap;
@@ -428,7 +574,7 @@
   text-overflow: ellipsis;
 }
 
-.semantic-glyph-objects h4 {
+.semantica-objects h4 {
   margin: 0 0 8px 0;
   font-size: 0.85em;
   color: var(--text-muted);
@@ -436,64 +582,64 @@
   letter-spacing: 0.05em;
 }
 
-.objects-empty {
+.semantica-objects-empty {
   color: var(--text-muted);
   font-style: italic;
   text-align: center;
   padding: 20px;
 }
 
-.objects-summary {
+.semantica-objects-summary {
   margin-bottom: 16px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--background-modifier-border);
 }
 
-.objects-stats {
+.semantica-objects-stats {
   display: flex;
   gap: 8px;
   font-size: 0.9em;
   color: var(--text-muted);
 }
 
-.objects-stat-sep {
+.semantica-objects-stat-sep {
   opacity: 0.5;
 }
 
-.objects-stat-error {
+.semantica-objects-stat-error {
   color: var(--text-error);
 }
 
 /* Validation */
-.objects-validation {
+.semantica-objects-validation {
   margin-bottom: 16px;
   padding: 12px;
   border-radius: 4px;
   background: var(--background-modifier-error);
 }
 
-.objects-validation h4 {
+.semantica-objects-validation h4 {
   color: var(--text-error);
   margin-bottom: 8px;
 }
 
-.objects-validation-item {
+.semantica-objects-validation-item {
   display: flex;
   gap: 8px;
   padding: 4px 0;
   font-size: 0.9em;
 }
 
-.objects-validation-icon {
+.semantica-objects-validation-icon {
   width: 16px;
 }
 
 /* Objects list */
-.objects-list {
+.semantica-objects-list {
   margin-bottom: 16px;
 }
 
-.objects-item {
+.semantica-objects-item {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -504,11 +650,11 @@
   transition: background 0.15s ease;
 }
 
-.objects-item:hover {
+.semantica-objects-item:hover {
   background: var(--background-modifier-hover);
 }
 
-.objects-item-badge {
+.semantica-objects-item-badge {
   font-family: var(--font-monospace);
   font-size: 0.85em;
   padding: 2px 6px;
@@ -516,40 +662,40 @@
   background: var(--background-secondary);
 }
 
-.objects-item-term {
+.semantica-objects-item-term {
   flex: 1;
   font-weight: 500;
 }
 
-.objects-item-refs {
+.semantica-objects-item-refs {
   font-size: 0.85em;
   color: var(--text-muted);
 }
 
-.objects-item-refs-unused {
+.semantica-objects-item-refs-unused {
   color: var(--text-error);
   font-style: italic;
 }
 
-.objects-item-pos {
+.semantica-objects-item-pos {
   font-size: 0.8em;
   color: var(--text-faint);
 }
 
 /* Glyphs summary */
-.objects-glyphs {
+.semantica-objects-glyphs {
   margin-top: 16px;
   padding-top: 12px;
   border-top: 1px solid var(--background-modifier-border);
 }
 
-.objects-glyphs-grid {
+.semantica-objects-glyphs-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.objects-glyph-item {
+.semantica-objects-glyph-item {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -558,11 +704,11 @@
   background: var(--background-secondary);
 }
 
-.objects-glyph-symbol {
+.semantica-objects-glyph-symbol {
   font-size: 1.1em;
 }
 
-.objects-glyph-count {
+.semantica-objects-glyph-count {
   font-size: 0.8em;
   color: var(--text-muted);
 }

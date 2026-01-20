@@ -51,13 +51,14 @@ export function tokenize(text: string): Token[] {
 
   // First pass: add DotId tokens
   for (const match of dotIdMatches) {
+    const isDeclaration = match.attachmentType !== 'reference';
     tokens.push({
-      type: match.isDeclaration ? 'dotid_declaration' : 'dotid_reference',
+      type: isDeclaration ? 'dotid_declaration' : 'dotid_reference',
       raw: match.raw,
       position: match.position,
-      value: match.isDeclaration
+      value: isDeclaration
         ? {
-            term: match.term!,
+            term: match.term || match.glyph || '',
             dotId: match.dotId,
             position: match.position,
             isDeclaration: true,
